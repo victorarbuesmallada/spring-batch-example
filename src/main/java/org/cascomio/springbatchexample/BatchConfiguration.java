@@ -1,5 +1,7 @@
 package org.cascomio.springbatchexample;
 
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaSparkContext;
 import org.cascomio.springbatchexample.models.Property;
 import org.cascomio.springbatchexample.parsers.DefaultHtmlParser;
 import org.cascomio.springbatchexample.parsers.HtmlParser;
@@ -21,7 +23,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.cascomio.springbatchexample.notifications.BatchCompletedNotification;
 import org.cascomio.springbatchexample.processors.FoxtonsProcessor;
-import org.cascomio.springbatchexample.writters.HivePropertyWritter;
+import org.cascomio.springbatchexample.writters.SparkPropertyWriter;
 
 import java.util.Collection;
 
@@ -69,6 +71,16 @@ public class BatchConfiguration {
     }
 
     @Bean
+    public JavaSparkContext sparkContext() {
+        SparkConf sparkConf = new SparkConf();
+        sparkConf.setAppName("Property Batch Example");
+        sparkConf.setMaster("spark://localhost:7077");
+        JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
+
+        return sparkContext;
+    }
+
+    @Bean
     public ItemReader<Collection<Document>> reader() {
         return new FoxtonsReader();
     }
@@ -80,6 +92,6 @@ public class BatchConfiguration {
 
     @Bean
     public ItemWriter<Collection<Property>> writer() {
-        return new HivePropertyWritter();
+        return new SparkPropertyWriter();
     }
 }
