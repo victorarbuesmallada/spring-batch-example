@@ -75,6 +75,7 @@ public class BatchConfiguration {
         SparkConf sparkConf = new SparkConf();
         sparkConf.setAppName("Property Batch Example");
         sparkConf.setMaster("local");
+        sparkConf.set("spark.hadoop.validateOutputSpecs", "false");
         JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
 
         return sparkContext;

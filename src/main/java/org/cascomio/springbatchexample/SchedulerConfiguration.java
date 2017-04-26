@@ -35,7 +35,7 @@ public class SchedulerConfiguration {
     @Bean
     public CronTriggerFactoryBean batchJobFactory() {
         CronTriggerFactoryBean jobFactory = new CronTriggerFactoryBean();
-        jobFactory.setCronExpression("0/10 * * * * ?");
+        jobFactory.setCronExpression("0/30 * * * * ?");
         jobFactory.setJobDetail(jobDetailFactory().getObject());
         return jobFactory;
     }

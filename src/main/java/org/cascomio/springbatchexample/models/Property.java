@@ -1,14 +1,15 @@
 package org.cascomio.springbatchexample.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class Property {
+public class Property implements Serializable {
     private UUID id;
-    private Long price;
+    private Long price = Long.MIN_VALUE;
     private Date onSaleSince = new Date();
-    private String description;
-    private String address;
+    private String description = "No Desc";
+    private String address = "No Address";
     private int numberOfBedrooms;
     private Integer size;
     private PropertyType propertyType;

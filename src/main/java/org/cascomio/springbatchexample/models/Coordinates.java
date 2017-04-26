@@ -1,6 +1,8 @@
 package org.cascomio.springbatchexample.models;
 
-public class Coordinates {
+import java.io.Serializable;
+
+public class Coordinates implements Serializable{
     private float x;
     private float y;
 

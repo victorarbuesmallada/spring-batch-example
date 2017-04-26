@@ -33,7 +33,7 @@ public class FoxtonsProcessor extends PropertyProcessor {
             property.setDescription(propertySummary.getElementsByClass(PROPERTY_DESCRIPTION).first().text());
         }
         catch(Exception ex){
-            ex.printStackTrace();
+//            ex.printStackTrace();
         }
         return property;
     }
