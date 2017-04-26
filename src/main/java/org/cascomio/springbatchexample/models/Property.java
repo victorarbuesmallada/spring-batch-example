@@ -6,7 +6,7 @@ import java.util.UUID;
 public class Property {
     private UUID id;
     private Long price;
-    private Date onSaleSince;
+    private Date onSaleSince = new Date();
     private String description;
     private String address;
     private int numberOfBedrooms;

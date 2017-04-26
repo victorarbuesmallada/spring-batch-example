@@ -17,9 +17,13 @@ public class SparkPropertyWriter implements ItemWriter<Collection<Property>> {
     @Override
     public void write(List<? extends Collection<Property>> properties) throws Exception {
         properties.stream().forEach(p -> {
-            JavaRDD<Property> propertiesRDD = sparkContext.parallelize(new ArrayList(p));
-            propertiesRDD.map(prop -> prop.getAddress() + ";"+ prop.getDescription())
-                                          .saveAsTextFile("/batch/example.csv");
+            try {
+                JavaRDD<Property> propertiesRDD = sparkContext.parallelize(new ArrayList(p));
+                propertiesRDD.map(prop -> prop.getAddress() + ";" + prop.getDescription())
+                        .saveAsTextFile("hdfs://localhost:8020/batch/example.csv");
+            } catch(Exception ex) {
+                ex.printStackTrace();
+            }
         });
 
     }

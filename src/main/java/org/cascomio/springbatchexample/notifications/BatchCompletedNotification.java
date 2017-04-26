@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 public class BatchCompletedNotification  extends JobExecutionListenerSupport {
     @Override
     public void afterJob(JobExecution jobExecution) {
-        System.out.println(String.format("%s job terminated at %d", jobExecution.getJobConfigurationName(), jobExecution.getEndTime()));
+        System.out.println(String.format("%s job terminated at %tc", jobExecution.getJobConfigurationName(), jobExecution.getEndTime()));
     }
 }

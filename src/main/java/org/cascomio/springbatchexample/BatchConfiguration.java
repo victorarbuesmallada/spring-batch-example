@@ -74,7 +74,7 @@ public class BatchConfiguration {
     public JavaSparkContext sparkContext() {
         SparkConf sparkConf = new SparkConf();
         sparkConf.setAppName("Property Batch Example");
-        sparkConf.setMaster("spark://localhost:7077");
+        sparkConf.setMaster("local");
         JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
 
         return sparkContext;
