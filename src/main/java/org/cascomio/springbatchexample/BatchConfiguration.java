@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.cascomio.springbatchexample.notifications.BatchCompletedNotification;
 import org.cascomio.springbatchexample.processors.FoxtonsProcessor;
-import org.cascomio.springbatchexample.writters.SparkPropertyWriter;
+import org.cascomio.springbatchexample.writers.SparkPropertyWriter;
 
 import java.util.Collection;
 
